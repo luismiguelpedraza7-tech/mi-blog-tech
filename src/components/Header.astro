@@ -17,7 +17,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 		
 		<!-- 🔍 Buscador integrado en el header -->
 		<div class="header-search">
-			<Search id="search" className="pagefind-ui" uiOptions={{ showImages: false }} />
+			<Search id="search" className="pagefind-ui" uiOptions={{ showImages: false }} 
+			bundlePath={`${base}/pagefind/`}
+			/>
 		</div>
 
 		<div class="social-links">

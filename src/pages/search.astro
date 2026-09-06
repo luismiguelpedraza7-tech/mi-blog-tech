@@ -1,0 +1,37 @@
+---
+import SearchBar from 'astro-pagefind/components/Search';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <BaseHead title={`Buscar | ${SITE_TITLE}`} description="Buscador de artículos" />
+    <style>
+      main {
+        width: 960px;
+        max-width: calc(100% - 2em);
+        margin: 0 auto;
+        padding: 3em 1em;
+      }
+      .search-container {
+        margin-top: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <h1>Buscar artículos</h1>
+      <p>Encuentra tutoriales por palabra clave o tecnología...</p>
+      
+      <div class="search-container">
+        <SearchBar id="search" className="pagefind-ui" uiOptions={{ showImages: true }} />
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

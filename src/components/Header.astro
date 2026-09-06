@@ -1,16 +1,25 @@
 ---
 import { SITE_TITLE } from '../consts';
+import SearchBar from 'astro-pagefind/components/Search';
 import HeaderLink from './HeaderLink.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <header>
 	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
+		<h2><a href={base}>{SITE_TITLE}</a></h2>
 		<div class="internal-links">
 			<HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/blog">Blog</HeaderLink>
 			<HeaderLink href="/about">About</HeaderLink>
 		</div>
+		
+		<!-- 🔍 Buscador integrado en el header -->
+		<div class="header-search">
+			<SearchBar id="search" className="pagefind-ui" uiOptions={{ showImages: false }} />
+		</div>
+
 		<div class="social-links">
 			<a href="https://m.webtoo.ls/@astro" target="_blank">
 				<span class="sr-only">Follow Astro on Mastodon</span>
@@ -62,6 +71,7 @@ import HeaderLink from './HeaderLink.astro';
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		gap: 1rem;
 	}
 	nav a {
 		padding: 1em 0.5em;
@@ -72,6 +82,10 @@ import HeaderLink from './HeaderLink.astro';
 	nav a.active {
 		text-decoration: none;
 		border-bottom-color: var(--accent);
+	}
+	.header-search {
+		max-width: 250px;
+		width: 100%;
 	}
 	.social-links,
 	.social-links a {
